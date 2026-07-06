@@ -1,0 +1,21 @@
+services:
+
+  nginx:
+
+    image: nginx:alpine
+
+    ports:
+
+      - "80:80"
+
+    volumes:
+
+      - ./nginx-live.conf:/etc/nginx/conf.d/nginx-live.conf:ro
+
+      - ./html:/usr/share/nginx/html:ro
+
+    extra_hosts:
+
+      - "host.docker.internal:172.17.0.1"
+
+    restart: unless-stopped
